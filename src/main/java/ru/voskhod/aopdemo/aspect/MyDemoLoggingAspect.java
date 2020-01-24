@@ -10,6 +10,7 @@ import org.springframework.stereotype.Component;
 import ru.voskhod.aopdemo.Account;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Aspect
 @Component
@@ -30,6 +31,14 @@ public class MyDemoLoggingAspect {
 
         // print out the results of the method call
         System.out.println("\n=====>> The result is: " + result);
+
+        // post-process data (modify it)
+
+        // covert the account names to uppercase
+        result.forEach(x -> x.setName(x.getName().toUpperCase()));
+
+        // print modified result
+        System.out.println("\n=====>> The modified result is: " + result);
     }
 
     @Before("ru.voskhod.aopdemo.aspect.AopExpressions.forDaoPackageNoGetterSetter()")
