@@ -54,4 +54,8 @@ public class AccountDAO  {
         System.out.println(getClass() + ": setServiceCode()");
         this.serviceCode = serviceCode;
     }
+
+    public List<Account> findAccountsWithException() {
+        throw new RuntimeException("No soup for you!!!");
+    }
 }
